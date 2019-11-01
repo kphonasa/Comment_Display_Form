@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<!-- Header -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,11 +47,12 @@
 
             .content {
                 text-align: center;
+                padding-bottom: 20px;
             }
 
             .title {
                 font-size: 84px;
-                padding-top: 200px;
+                margin-top: 200px;
             }
 
             .head {
@@ -86,12 +89,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- App Name/Title -->
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('../../js/app.js') }}" defer></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <!-- Refreshes table every minute -->
+    <!-- Refreshes comment table every minute -->
     <script>
         $(document).ready(
             function() {
@@ -105,9 +109,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-
 </head>
+
+<!-- Body Content -->
 <body>
     <div id="app">
         <main class="py-4">

@@ -7,12 +7,19 @@ use App\comment;
 
 class CommentFormController extends Controller
 {
+    /*On page load get session variable*/
    public function index()
    {
-       return view('welcome');
+       $authorEmail = session()->get('$authorEmail');
+       return view('welcome')->with('$authorEmail', $authorEmail);
    }
 
+    /*Place holder to grab all session variables*/
+    public function mySession(){
+        return session()->all();
+   }
 
+   /*Validate and store comments. Set authorEmail session and set success message*/
     public function store(Request $request)
     {
        $this->validate($request, [
@@ -26,13 +33,11 @@ class CommentFormController extends Controller
         $comments->authorName = request('authorName');
         $comments->authorEmail = request('authorEmail');
         $comments->authorComment = request('authorComment');
+
+        $authorEmail =  $comments->authorEmail = request('authorEmail');
+        session(['authorEmail' => $authorEmail]);
+
         $comments->save();
-
-
-    /*    $comment = comment::create($request->all());
-        broadcast(new comment($comment));
-        return response()->json("success");*/
-
 
        return redirect('/')->with('message','Your roast was successfully added!');
     }
